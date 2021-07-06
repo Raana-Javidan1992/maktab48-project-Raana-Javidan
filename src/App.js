@@ -1,12 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import {Route, Switch} from "react-router-dom"
+import Navbar from './components/Navbar';
+import AdminLogin from './components/AdminLogin';
+import AdminPanel from './components/AdminPanel';
+import { ProtectedRoute } from "./ProtectedRoute";
+import NotFound from './components/NotFound';
+import ArenaMarket from './components/ArenaMarket';
+// import ProductListing from '../containers/ProductListing';
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">hey you
-      </header>
-    </div>
+    <React.Fragment>
+      <Navbar/>
+      <Switch>
+        <Route path="/home" exact component={ArenaMarket} />
+        <Route path="/login" exact component={AdminLogin}/>
+        {/* <Route path="/products" exact component={ProductListing}/> */}
+        <ProtectedRoute path="/adminPanel" exact component={AdminPanel} />
+        <Route path="*" component={NotFound} />
+
+
+
+
+      </Switch>
+    </React.Fragment>
+
+
   );
 }
 

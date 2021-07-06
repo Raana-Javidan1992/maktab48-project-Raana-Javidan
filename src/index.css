@@ -11,3 +11,32 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.btn2{
+  margin-right: auto;
+
+}
+.AppbarContainer{
+  display: flex;
+}
+
+.nav-link{
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 15px;
+}
+.goBack{
+  cursor: pointer;
+  float: left;
+}
+
+.btn3{
+  background-color: forestgreen;
+  color: white;
+  float: left;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size:medium;
+}
