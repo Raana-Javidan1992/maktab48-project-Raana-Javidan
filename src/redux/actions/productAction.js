@@ -1,4 +1,5 @@
 import { ActionTypes } from "../constants/action-types";
+import { getAllProducts, getAProductById, deleteProductById } from "../../api/products"
 
 export const setProducts = (products) => {
     return {
@@ -13,3 +14,28 @@ export const setProducts = (products) => {
       payload: product,
     };
   };
+
+  export const deleteSelectedProduct = (id) =>{
+    return {
+      type: ActionTypes.REMOVE_SELECTED_PRODUCT,
+      payload: id,
+    }
+  }
+
+
+  export const getProducts = () => async (dispatch, getState) =>{
+    let res = await getAllProducts();
+    dispatch(setProducts(res.data))
+  }
+
+
+  export const getAProduct = (id) => async (dispatch) =>{
+    let res = await getAProductById(id);
+    dispatch(selectedProduct(res.data))
+  }
+
+
+  export const deleteProduct = (id) => async (dispatch) =>{
+    let res = await deleteProductById(id);
+    dispatch(deleteSelectedProduct(id))
+  }

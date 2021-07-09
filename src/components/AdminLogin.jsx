@@ -50,8 +50,8 @@ export default function AdminLogin() {
           localStorage.setItem("token", res.data.token);
           console.log(res)
           console.log(res.data.token);
-          // window.location.reload();
           history.push("/adminPanel")
+          window.location.reload();
         })
         .catch((err) => console.error(err));
     } else {

@@ -7,18 +7,18 @@ import ProductComponent from './ProductComponent';
 const ProductListing = () => {
     const products = useSelector((state) => state);
     const dispatch = useDispatch()
-    const fetchProducts = async () =>{
-        // const respone = await axios.get("https://fakestoreapi.com/products")
-        const respone = await axios.get("http://localhost:5000/products")
-        .catch((err) => {
-            console.log("Err", err);
-        })
-        dispatch(setProducts(respone.data));
-    }
+    // const getAllProducts = async () =>{
+    //     // const respone = await axios.get("https://fakestoreapi.com/products")
+    //     const respone = await axios.get("http://localhost:5000/products")
+    //     .catch((err) => {
+    //         console.log("Err", err);
+    //     })
+    //     dispatch(setProducts(respone.data));
+    // }
 
-    useEffect(() => {
-        fetchProducts()
-    }, [])
+    // useEffect(() => {
+    //     getAllProducts()
+    // }, [])
 
     console.log("products", products);
     console.log("he");
