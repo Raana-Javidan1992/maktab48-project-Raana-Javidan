@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import axios from "axios"
 import api from "../api/products"
 import _ from 'lodash'
-import { setProducts, selectedProduct, deleteSelectedProduct, getProducts, getAProduct, deleteProduct } from "../redux/actions/productAction"
+import {  getProducts, deleteProduct } from "../redux/actions/productAction"
 
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -28,16 +28,13 @@ const useStyles = makeStyles({
   },
 });
 const ProductComponent = () => {
-  // const [sortColumn, setSortColumn] = useState({path:'category', order:'asc'})
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-  // const sorted = _.orderBy(products, [sortColumn.path], [sortColumn.order]);
   const products = useSelector((state) => state.allProducts.products);
   const dispatch = useDispatch()
 
   const classes = useStyles();
 
-  // const allProducts= paginate(sorted, currentPage, pageSize)
   const totalCount = products.length
 
   const handleChangePage = (event, newPage) => {
@@ -53,7 +50,9 @@ const ProductComponent = () => {
   const handleDeleteAProduct= (id) =>{
     dispatch(deleteProduct(id))
     dispatch(getProducts())
+    console.log("jhguy");
   }
+  // console.log(products);
 
   useEffect(()=>{
     dispatch(getProducts())
@@ -72,7 +71,7 @@ const ProductComponent = () => {
                 <IconButton aria-label="edit">
                             <EditIcon/>
                           </IconButton>
-                          <IconButton aria-label="delete" onClick={(e)=> handleDeleteAProduct}>
+                          <IconButton aria-label="delete" onClick={(e)=> handleDeleteAProduct(product.id)}>
                             <DeleteIcon/>
                           </IconButton>
                 </TableCell>

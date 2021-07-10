@@ -36,6 +36,6 @@ export const setProducts = (products) => {
 
 
   export const deleteProduct = (id) => async (dispatch) =>{
-    let res = await deleteProductById(id);
+    await deleteProductById(id);
     dispatch(deleteSelectedProduct(id))
   }

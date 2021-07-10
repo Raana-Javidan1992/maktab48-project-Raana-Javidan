@@ -24,9 +24,7 @@ export const getAProductById = async (id)=>{
 
 
 export const deleteProductById = async (id)=>{
-    await axios.delete( `http://localhost:5000/products/${id}`)
-    .then(res=>{
+    await axios.delete(`http://localhost:5000/products/${id}`).then(res=>{
         console.log(res);
-        console.log(res.data);
     })     
 };
