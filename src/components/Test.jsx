@@ -203,3 +203,22 @@ export const deleteProductById = async(id)=>{
       "name": "typicode"
     }
   }
+
+
+  const handleEditSubmit = () => {
+    dispatch(deletProd(selected.id));
+    let prodoct = {
+        "id":selected.id,
+        "productName":nameProd, 
+        "category":categProd,
+        "image":imageSrc,
+      }
+      // for edit section
+      if(selected.id != (rows.length+1)){
+        update(prodoct);
+      }else{  // for add section
+        add(prodoct);
+      }
+      dispatch(editProd(prodoct));
+  setOpen(false);
+}

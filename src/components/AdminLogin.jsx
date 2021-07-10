@@ -11,8 +11,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { login } from "./../api/login";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css' 
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css' 
 
 
 
@@ -55,7 +55,7 @@ export default function AdminLogin() {
         })
         .catch((err) => console.error(err));
     } else {
-      toast.error("email and password fields could not be empty! ");
+      console.error("email and password fields could not be empty! ");
     }
   };
 
@@ -71,6 +71,8 @@ export default function AdminLogin() {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
+      {/* <ToastContainer /> */}
+
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>

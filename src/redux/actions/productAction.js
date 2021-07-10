@@ -1,5 +1,5 @@
 import { ActionTypes } from "../constants/action-types";
-import { getAllProducts, getAProductById, deleteProductById } from "../../api/products"
+import { getAllProducts, getAProductById, deleteProductById ,addProduct, updateProduct} from "../../api/products"
 
 export const setProducts = (products) => {
     return {
@@ -21,6 +21,12 @@ export const setProducts = (products) => {
       payload: id,
     }
   }
+  export const editProduct = (id) =>{
+    return {
+      type: ActionTypes.EDIT_PRODUUCT,
+      payload: id,
+    }
+  }
 
 
   export const getProducts = () => async (dispatch, getState) =>{
@@ -38,4 +44,13 @@ export const setProducts = (products) => {
   export const deleteProduct = (id) => async (dispatch) =>{
     await deleteProductById(id);
     dispatch(deleteSelectedProduct(id))
+  }
+
+  export const addAProduct = (id) => async (dispatch) =>{
+    let res = await addProduct(id);
+    dispatch(editProduct(res.data))
+  }
+  export const updateAProduct = (id) => async (dispatch) =>{
+    let res = await updateProduct(id);
+    dispatch(editProduct(res.data))
   }

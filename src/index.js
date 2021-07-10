@@ -5,7 +5,7 @@ import App from './App';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import {BrowserRouter} from "react-router-dom"
-import {createMuiTheme} from  '@material-ui/core'
+import {createTheme} from  '@material-ui/core'
 import { create } from 'jss';
 import rtl from 'jss-rtl';
 import { StylesProvider, jssPreset,ThemeProvider } from '@material-ui/core/styles';
@@ -13,7 +13,7 @@ import { StylesProvider, jssPreset,ThemeProvider } from '@material-ui/core/style
 
 
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
-const theme = createMuiTheme({
+const theme = createTheme({
   direction: 'rtl',
 });
 ReactDOM.render(

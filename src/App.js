@@ -7,7 +7,6 @@ import AdminPanel from './components/AdminPanel';
 import { ProtectedRoute } from "./ProtectedRoute";
 import NotFound from './components/NotFound';
 import ArenaMarket from './components/ArenaMarket';
-// import ProductComponentfake from "./components/Test"
 
 
 function App() {
@@ -15,7 +14,6 @@ function App() {
     <React.Fragment>
       <Navbar/>
       <Switch>
-        {/* <Route path="/rrr" exact component={ProductComponentfake}/> */}
         <Route path="/home" exact component={ArenaMarket} />
         <Route path="/login" exact component={AdminLogin}/>
         <ProtectedRoute path="/adminPanel" exact component={AdminPanel} />

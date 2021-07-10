@@ -8,9 +8,10 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import {useHistory, Link } from 'react-router-dom';
-import ProductListing from '../containers/ProductListing';
-import InventoryListing from '../containers/InventoryListing';
+import {useHistory } from 'react-router-dom';
+import ProductComponent from '../containers/ProductComponent';
+import InventoryComponent from '../containers/InventoryComponent';
+import AddModal from "../components/AddModal"
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -105,14 +106,14 @@ export default function AdminPanel() {
 
         <TabPanel value={value} index={0} dir={theme.direction}>
           مدیریت کالا ها
-          <button className="btn3">افزودن کالا</button>
-          <ProductListing/>
+          <button className="btn3"><AddModal/></button>
+          <ProductComponent/>
 
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
           مدیریت موجودی و قیمت ها 
           <button className="btn3"> ذخیره</button>
-          <InventoryListing/>
+          <InventoryComponent/>
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
           مدیریت سفارش ها

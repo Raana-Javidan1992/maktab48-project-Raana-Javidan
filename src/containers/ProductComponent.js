@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import axios from "axios"
-import api from "../api/products"
-import _ from 'lodash'
-import {  getProducts, deleteProduct } from "../redux/actions/productAction"
 
+import {  getProducts, deleteProduct } from "../redux/actions/productAction"
+import SimpleModal from "../components/simpleModal"
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -35,7 +33,6 @@ const ProductComponent = () => {
 
   const classes = useStyles();
 
-  const totalCount = products.length
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -50,9 +47,13 @@ const ProductComponent = () => {
   const handleDeleteAProduct= (id) =>{
     dispatch(deleteProduct(id))
     dispatch(getProducts())
+    // window.location.reload()
     console.log("jhguy");
   }
-  // console.log(products);
+  
+  const handleEditAProduct= (id) => {
+    console.log(id);
+  }
 
   useEffect(()=>{
     dispatch(getProducts())
@@ -63,17 +64,17 @@ const ProductComponent = () => {
       return (
               <TableRow key={product.id}>
                 <TableCell component="th" scope="row">
-                  <img src={image} title={title} style={{width: "100px", height:"100px"}}/>
+                  <img src={image} title={title} style={{width: "100px", height:"100px"}} alt={title}/>
                 </TableCell>
                 <TableCell align="left">{title}</TableCell>
                 <TableCell align="left">{category}</TableCell>
                 <TableCell align="left">
-                <IconButton aria-label="edit">
-                            <EditIcon/>
-                          </IconButton>
-                          <IconButton aria-label="delete" onClick={(e)=> handleDeleteAProduct(product.id)}>
-                            <DeleteIcon/>
-                          </IconButton>
+                <IconButton aria-label="edit" onClick={(e)=> handleEditAProduct(product.id)}>
+                  <SimpleModal/>
+                 </IconButton>
+                    <IconButton aria-label="delete" onClick={(e)=> handleDeleteAProduct(product.id)}>
+                      <DeleteIcon/>
+                    </IconButton>
                 </TableCell>
               </TableRow>             
       )
